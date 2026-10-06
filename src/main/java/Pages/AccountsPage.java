@@ -16,7 +16,7 @@ public class AccountsPage extends BaseClass{
     private By billingcountry=By.xpath("//input[@data-name='billingAddressCountry']");
     //private By type=By.xpath("//select[@data-name='type']");
     private By typeDropDownBox=By.xpath("//div[@data-name='type']/div[@class='selectize-control form-control main-element single plugin-espo_select']");
-    private By typeDropDownValue=By.xpath("//div[@data-name='type']/div[@class='selectize-control form-control main-element single plugin-espo_select']//div[@class='text-success item']");
+    private By typeDropDownValue=By.xpath("//div[@data-name='type']/div[@class='selectize-control form-control main-element single plugin-espo_select']/div/div[contains(@class,'item')]");
     private By industryDropDownBox=By.xpath("//div[@data-name='industry']/div[@class='selectize-control form-control main-element single plugin-espo_select']");
     private By industryDropDownValue=By.xpath("//div[@data-name='industry']/div[@class='selectize-control form-control main-element single plugin-espo_select']//div[@class='item']");
     ////div[@data-name='type']//div[@class='selectize-dropdown-content']/div[@data-value='Investor']
@@ -96,6 +96,7 @@ public class AccountsPage extends BaseClass{
         if(cab.getType()!=null)
         {
             ScrollTillElementVisible(typeDropDownBox);
+            waitUntilElementVisible(typeDropDownBox);
             click(typeDropDownBox);
             click(SelectTypeXapth(cab.getType()));
             captureValues.put("type",getTextValue(typeDropDownValue));  
